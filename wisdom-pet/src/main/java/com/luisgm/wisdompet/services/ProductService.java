@@ -2,11 +2,13 @@ package com.luisgm.wisdompet.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
 import com.luisgm.wisdompet.data.entities.ProductEntity;
 import com.luisgm.wisdompet.data.repositories.ProductRepository;
+import com.luisgm.wisdompet.web.errors.NotFoundException;
 import com.luisgm.wisdompet.web.models.Product;
 
 @Service
@@ -48,6 +50,14 @@ public class ProductService {
 
         return products;
     } 
+
+    public Product getProduct(long id) { 
+        Optional<ProductEntity> entity = this.productRepository.findById(id);
+        if(entity.isEmpty()) { 
+            throw new NotFoundException("No product found with corresponding ID");
+        }
+        return this.translateDbToWeb(entity.get());
+    }
 
     public Product createOrUpdate(Product product) { 
         ProductEntity entity = this.translateWebToDb(product);
