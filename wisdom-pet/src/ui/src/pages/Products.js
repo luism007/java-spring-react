@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Products = () => {
-    const products = [{"id":1,"name":"Strong Joints Dog Supplement","price":5.87,"vendorId":9},{"id":2,"name":"Healthy Coat Dog Supplement","price":6.44,"vendorId":4}];
+    
+    const [products, setProducts] = useState([]);
+    
+    const getProducts = async() => {
+        const res = await fetch('/api/products');
+        const products = await res.json();
+        setProducts(products);
+    }
+
+    useEffect(() => {
+        getProducts().catch(e => console.log('error fetching products', e));
+    }, [])
+    
     return (
       <table>
         <thead>
