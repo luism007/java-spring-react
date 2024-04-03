@@ -63,4 +63,14 @@ public class VendorService {
 
         return this.translateDbToWeb(optional.get());
     }
+
+    public Vendor createOrUpdate(Vendor vendor) {
+        VendorEntity entity = this.translateWebToDb(vendor);
+        entity = this.vendorRepository.save(entity);
+        return this.translateDbToWeb(entity);
+    }
+
+    public void deleteVendor(Long id) {
+        this.vendorRepository.deleteById(id);
+    }
 }

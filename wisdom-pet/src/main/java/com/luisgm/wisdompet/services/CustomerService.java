@@ -38,9 +38,9 @@ public class CustomerService {
             entity.getId(), 
             entity.getFirstName(), 
             entity.getLastName(), 
-            entity.getEmail(), 
-            entity.getAddress(), 
-            entity.getPhone());
+            entity.getEmail(),
+            entity.getPhone(),
+            entity.getAddress());
     }
 
     public List<Customer> getAllCustomers(String filterEmail)  { 
