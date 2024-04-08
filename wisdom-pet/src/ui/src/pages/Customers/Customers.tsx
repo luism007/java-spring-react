@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Table } from "../components/Table/Table";
+import { Table } from "../../components/Table/Table";
 import { GridColDef } from "@mui/x-data-grid";
-import { Customer } from "../types/Customer";
-
+import { Customer } from "../../types/Customer";
+import './Customers.css';
+import { Skeleton } from "@mui/material";
 export const Customers = () => {
 
     const [customers, setCustomers] = useState<Customer[]>([]);
@@ -61,9 +62,11 @@ export const Customers = () => {
 
     return (
         <>
-            <h1>Customers</h1>
-            {customers?.length > 0 && <Table columns={columns} rows={customers}>
-            </Table >}
+            <h1 data-cy="customer-heading">Customers</h1>
+            <div className="values-wrapper">
+                {(customers?.length > 0 ) ? <Table data-cy="customers-table" columns={columns} rows={customers}>
+                </Table > : <Skeleton variant = "rounded" width={"100%"} height={"100%"}/>}
+            </div>
         </>
     );
 };

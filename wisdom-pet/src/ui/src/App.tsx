@@ -1,22 +1,24 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Layout from './pages/Layout';
-import Home from './pages/Home';
-import {Customers} from './pages/Customers';
+import {Customers} from './pages/Customers/Customers';
+import {Layout} from './pages/Layout';
 import Products from './pages/Products';
-function App() {
+import { Tabs, Tab } from '@mui/material';
+import { NavigationBar } from "./components/NavBar/NavigationBar";
+import React from 'react';
+import { Home } from './pages/Home';
+export const App = () => {
   return (
     <div className="App">
-     <BrowserRouter>
+     <NavigationBar/>
+     <div className='appBody'>
       <Routes>
         <Route path = {'/'} element = {<Layout/>}/>
         <Route index element = {<Home/>}></Route>
         <Route path={'/customers'} element = {<Customers/>} />
         <Route path = {'/products'} element = {<Products/>} />
-      </Routes> 
-    </BrowserRouter>
+      </Routes>
+     </div>
     </div>
   );
 }
-
-export default App;
