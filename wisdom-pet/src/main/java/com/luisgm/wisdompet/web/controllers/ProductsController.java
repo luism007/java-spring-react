@@ -7,8 +7,6 @@ import com.luisgm.wisdompet.web.errors.BadRequestException;
 import com.luisgm.wisdompet.web.models.Product;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;

@@ -14,19 +14,36 @@ import lombok.ToString;
 @Data
 @ToString
 public class CustomerEntity {
-    @Id
-    @Column(name="CUSTOMER_ID")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long id;
 
-    @Column(name="FIRST_NAME")
-            private String firstName;
-    @Column(name="LAST_NAME")
-            private String lastName;
-    @Column(name="EMAIL")
-            private String email;
-    @Column(name="PHONE")
-            private String phone;
-    @Column(name="ADDRESS")
-            private String address;
+        public CustomerEntity(long randomUUID, String firstName, String lastName, String email, String phoneNumber,
+                        String address) {
+                this.setId(randomUUID);
+                this.setFirstName(firstName);
+                this.setLastName(lastName);
+                this.setEmail(email);
+                this.setPhone(phoneNumber);
+                this.setAddress(address);
+        }
+
+        public CustomerEntity() { 
+                
+        }
+
+        @Id
+        @Column(name = "CUSTOMER_ID")
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private long id;
+
+        @Column(name = "FIRST_NAME")
+        private String firstName;
+        @Column(name = "LAST_NAME")
+        private String lastName;
+        @Column(name = "EMAIL")
+        private String email;
+        @Column(name = "PHONE")
+        private String phone;
+        @Column(name = "ADDRESS")
+        private String address;
+
+
 }

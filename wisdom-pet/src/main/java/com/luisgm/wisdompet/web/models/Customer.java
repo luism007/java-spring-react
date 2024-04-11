@@ -10,9 +10,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Customer {
+    public Customer(
+            Long id,
+            String firstName,
+            String lastName,
+            String emailAddress,
+            String phoneNumber,
+            String address) {
+        //TODO Auto-generated constructor stub
+        this.customerId = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.emailAddress = emailAddress;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
     public Long customerId; 
     public String firstName;
     public String lastName;
