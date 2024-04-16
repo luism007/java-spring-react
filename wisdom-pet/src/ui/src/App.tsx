@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import {Customers} from './pages/Customers/Customers';
 import {Layout} from './pages/Layout';
-import Products from './pages/Products';
+import Products from './pages/Products/Products';
 import { Tabs, Tab } from '@mui/material';
 import { NavigationBar } from "./components/NavBar/NavigationBar";
 import React from 'react';

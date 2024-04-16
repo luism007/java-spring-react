@@ -40,20 +40,20 @@ export const Customers = () => {
             minWidth: 400
         }
     ]
+
+    const transformToTableData = (c: Customer) => {
+        return {
+            ...c,
+            id: c.customerId
+        }
+    };
+
     const getCustomers = async () => {
         const res = await fetch('/api/customers');
         const customers = await res.json();
-        setCustomers(customers.map((c: Customer) => {
-            return {
-                id: c.customerId, 
-                firstName: c.firstName,
-                lastName: c.lastName,
-                emailAddress: c.emailAddress,
-                phoneNumber: c.phoneNumber,
-                address: c.address
-            } 
-        }));
+        setCustomers(customers.map((c: Customer) => transformToTableData(c)));
     }
+
     useEffect(() => {
         getCustomers().catch(e => {
             console.log('error fetching customers', e);
@@ -62,8 +62,8 @@ export const Customers = () => {
 
     return (
         <>
-            <h1 data-cy="customer-heading">Customers</h1>
-            <div className="values-wrapper">
+            <h1 data-cy="customer-heading" data-testid="customer-heading">Customers</h1>
+            <div className="values-wrapper" data-testid="table-wrapper">
                 {(customers?.length > 0 ) ? <Table data-cy="customers-table" columns={columns} rows={customers}>
                 </Table > : <Skeleton variant = "rounded" width={"100%"} height={"100%"}/>}
             </div>

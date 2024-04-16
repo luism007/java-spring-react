@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Product } from "../types/Products";
+import { Product } from "../../types/Products";
 import { GridColDef } from "@mui/x-data-grid";
-import { Table } from "../components/Table/Table";
-
+import { Table } from "../../components/Table/Table";
+import './Products.css';
+import { Skeleton } from "@mui/material";
 const Products = () => {
     
     const [products, setProducts] = useState<Product[]>([]);
@@ -43,9 +44,12 @@ const Products = () => {
     return (
       <>
         <h1> Products </h1>
-        { products?.length > 0 &&
-          <Table columns = {columns} rows = {products}></Table>
-        }
+        <div className="values-wrapper">
+          {(products?.length > 0) ?
+            <Table columns={columns} rows={products}></Table>
+            : <Skeleton variant="rounded" width={"100%"} height={"100%"} />
+          }
+        </div>
       </>
     );
 }
